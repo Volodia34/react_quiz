@@ -1,7 +1,7 @@
 import React from 'react';
 import Answer from "./Answer";
 
-const Question = () => {
+const Question = ({question}) => {
     return (
         <div>
             <div className='question'>Quesion</div>
