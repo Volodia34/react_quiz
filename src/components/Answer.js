@@ -1,10 +1,17 @@
 import React from 'react';
 
-const Answer = () => {
+const Answer = ({answerText,onSelectAnswer,index,currentAnswer,correctAnswer}) => {
+    const latterMapping = ['A','B','C','D']
+
+    const isCorrectAnswer = currentAnswer && answerText === correctAnswer
+    const isWrongAnswer = currentAnswer === answerText && currentAnswer !== correctAnswer
+    const correntAnswerClass= isCorrectAnswer ? 'correct-answer' : ''
+    const wrongAnswerClass = isWrongAnswer ? 'wrong-answer' : ''
+    const disabledClass = currentAnswer ? 'disabled-answer' : ''
     return (
-        <div className='answer'>
-            <div className="answer-letter">A</div>
-            <div className="answer-text">Text of answer</div>
+        <div className={`answer ${correntAnswerClass} ${wrongAnswerClass} ${disabledClass}`} onClick={() => onSelectAnswer(answerText)}>
+            <div className="answer-letter">{latterMapping[index]}</div>
+            <div className="answer-text">{answerText}</div>
         </div>
     );
 };
